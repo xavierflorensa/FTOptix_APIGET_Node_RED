@@ -1,0 +1,10 @@
+Name: Model
+Type: ModelCategoryFolder
+Children:
+- Name: datosAPI
+  Type: BaseObjectType
+  Children:
+  - Name: URL
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "http://127.0.0.1:1880/plc"

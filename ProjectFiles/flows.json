@@ -1,0 +1,137 @@
+[
+    {
+        "id": "8d6dfa56.8a9c18",
+        "type": "http in",
+        "z": "2fa30c2db957bbdd",
+        "name": "",
+        "url": "/plc",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 80,
+        "y": 60,
+        "wires": [
+            [
+                "40e3ff29.2f5938"
+            ]
+        ]
+    },
+    {
+        "id": "1a8e2723.a47041",
+        "type": "http response",
+        "z": "2fa30c2db957bbdd",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 310,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "40e3ff29.2f5938",
+        "type": "function",
+        "z": "2fa30c2db957bbdd",
+        "name": "",
+        "func": "var a=flow.get('IoT_data');\nmsg.payload={IoT_data:a};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 140,
+        "y": 120,
+        "wires": [
+            [
+                "1a8e2723.a47041",
+                "33365046013e1ccf"
+            ]
+        ]
+    },
+    {
+        "id": "1329e2ff.e6ea3d",
+        "type": "inject",
+        "z": "2fa30c2db957bbdd",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "2",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 240,
+        "wires": [
+            [
+                "ce505b14.47a02"
+            ]
+        ]
+    },
+    {
+        "id": "85f81530.486488",
+        "type": "change",
+        "z": "2fa30c2db957bbdd",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "IoT_data",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ce505b14.47a02",
+        "type": "random",
+        "z": "2fa30c2db957bbdd",
+        "name": "",
+        "low": 1,
+        "high": 10,
+        "inte": "true",
+        "property": "payload",
+        "x": 140,
+        "y": 300,
+        "wires": [
+            [
+                "85f81530.486488"
+            ]
+        ]
+    },
+    {
+        "id": "33365046013e1ccf",
+        "type": "debug",
+        "z": "2fa30c2db957bbdd",
+        "name": "debug 38",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 320,
+        "y": 160,
+        "wires": []
+    }
+]
